@@ -22,8 +22,6 @@ public class AdminController {
     @Autowired
     SysAdminService sysAdminService;
 
-    @Autowired
-
     /**
      * 用户名和密码取用户信息
      * @param userName
@@ -35,5 +33,14 @@ public class AdminController {
         if (StringUtil.isEmpty(userName) || StringUtil.isEmpty(password))
             throw new ParamNullException("参数为空");
         return sysAdminService.getSingleAdmin(userName, PasswordUtil.md5Encrypt(password));
+    }
+
+    @PostMapping("/oauth/login")
+    public SysAdmin getAdminByName(String userName) throws ParamNullException {
+        if (StringUtil.isEmpty(userName))
+            throw new ParamNullException("参数为空");
+
+        return sysAdminService.getSingleAdminByName(userName);
+
     }
 }

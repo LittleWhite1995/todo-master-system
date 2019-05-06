@@ -1,6 +1,7 @@
 package com.todo.system.backend.controller;
 
 import com.todo.system.backend.config.AppBackendConfigProperties;
+//import com.todo.system.backend.utils.BPwdEncoderUtil;
 import com.todo.system.entity.bo.LoginUserBo;
 import com.todo.system.entity.po.SysAdmin;
 import com.todo.system.entity.vo.LoginUserVo;
@@ -56,21 +57,24 @@ public class UserController {
             return new UnifiedResponseObject().failMsg("用户名或密码为空或不合法");
         }
 
-        SysAdmin sysAdmin = getSysAdminByName(loginUserBo.getUsername(), loginUserBo.getPassword());
+        SysAdmin sysAdmin = getSysAdminByName(loginUserBo.getUsername());
 
         if (sysAdmin == null) {
             return new UnifiedResponseObject<String>().failMsg("用户名或密码不合法");
         }
 
-//        if (!BPwdEncoderUtil.matches(loginUser.getPassword(), sysAdmin.getPassword().replace("{bcrypt}","")))
+//        if (!BPwdEncoderUtil.matches(loginUserBo.getPassword(), sysAdmin.getPassword().replace("{bcrypt}","")))
 //            return new UnifiedResponseObject<String>().failMsg("密码不正确");
+
+        if (!loginUserBo.getPassword().equals(sysAdmin.getPassword()))
+            return new UnifiedResponseObject<String>().failMsg("密码不正确");
 
         LoginUserVo loginUserVo = new LoginUserVo();
         loginUserVo.setUsername(loginUserBo.getUsername());
         return new UnifiedResponseObject<LoginUserVo>().successMsg(loginUserVo);
     }
 
-    private SysAdmin getSysAdminByName(String userName, String password) {
+    private SysAdmin getSysAdminByName(String userName) {
         MultiValueMap<String, String> map =  new LinkedMultiValueMap<String, String>();
         map.add("userName", userName);
 

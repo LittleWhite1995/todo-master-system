@@ -13,11 +13,18 @@ eureka:
     health-check-url-path: /actuator/health
     prefer-ip-address: true
 
-  client:
-    registryFetchIntervalSeconds: 5
-    enabled: true # 是否启用注册服务 默认为true, false是不启用
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+custom:
+  data:
+    gateway:
+      host: http://localhost:8762
+
+client:
+  registryFetchIntervalSeconds: 5
+  enabled: true # 是否启用注册服务 默认为true, false是不启用
+  service-url:
+    defaultZone: http://localhost:8761/eureka/
+
+
 
 
 

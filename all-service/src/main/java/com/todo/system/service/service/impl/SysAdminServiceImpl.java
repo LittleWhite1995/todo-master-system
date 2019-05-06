@@ -9,7 +9,7 @@ import com.todo.system.util.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("sysAdminService")
 public class SysAdminServiceImpl implements SysAdminService {
 
     @Autowired
@@ -21,5 +21,18 @@ public class SysAdminServiceImpl implements SysAdminService {
             throw new ParamNullException("roleId 参数为空");
 
         return sysAdminMapper.selectSingleByNameAndPwd(userName, password);
+    }
+
+    /**
+     * 获取单个系统用户
+     * @param userName
+     * @return
+     * @throws ParamNullException
+     */
+    public SysAdmin getSingleAdminByName(String userName) throws ParamNullException {
+        if (StringUtil.isEmpty(userName))
+            throw new ParamNullException("roleId 参数为空");
+
+        return sysAdminMapper.selectSingleByName(userName);
     }
 }

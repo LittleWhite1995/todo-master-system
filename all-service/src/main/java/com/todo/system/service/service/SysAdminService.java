@@ -7,5 +7,7 @@ public interface SysAdminService {
 
     // 用户名和密码取用户信息
     SysAdmin getSingleAdmin(String userName, String password) throws ParamNullException;
+    // 获取单个系统用户信息
+    SysAdmin getSingleAdminByName(String userName) throws ParamNullException;
 
 }
