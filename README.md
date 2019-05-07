@@ -6,4 +6,4 @@
 APP前端连接 https://github.com/shj1995/todo
 
 ## 目前进度
-数据库已配置(登陆deme查询测试ok)->配置下druid(还没配)
+数据库已配置(登陆deme查询测试ok)->配置下druid(已配置)

@@ -6,7 +6,32 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # WebStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        # 排队不必要的url
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        session-stat-max-count: 1000
+        # 关闭session统计功能
+        session-stat-enable: false
+        # druid 0.2.7版本开始支持profile，配置profileEnable能够监控单个url调用的sql列表
+        profile-enable: true
 
 server:
   port: 8762
