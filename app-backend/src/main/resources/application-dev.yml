@@ -24,6 +24,13 @@ client:
   service-url:
     defaultZone: http://localhost:8761/eureka/
 
+logging:
+  file: var/log/app-backend.log
+  level:
+    com:
+      todo:
+        system:
+          backend: DEBUG
 
 
 

@@ -12,3 +12,6 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  file: var/log/eureka-server.log
