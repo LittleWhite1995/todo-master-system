@@ -5,7 +5,7 @@ import java.util.Date;
  * @program: com-todo-sysytem-parent
  * @description: SysAdmin
  * @author: littleWhite
- * @create: 2019-05-05 15:47
+ * @create: 2019/5/5 15:47
  **/
 public class SysAdmin {
 

@@ -26,6 +26,9 @@ public class UrlRegulation {
         /** admin */
         public static final String ADMIN = "/admin";
 
+        /** 任务前缀 */
+        public static final String TASK = "/task";
+
     }
 
 }

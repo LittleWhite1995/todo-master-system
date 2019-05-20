@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping(UrlRegulation.BizPrefix.ADMIN)
 public class AdminController {
@@ -37,9 +40,10 @@ public class AdminController {
 
     @PostMapping("/oauth/login")
     public SysAdmin getAdminByName(String userName) throws ParamNullException {
+        Map<String,Object> map = new HashMap<>();
+        map.put("a","b");
         if (StringUtil.isEmpty(userName))
             throw new ParamNullException("参数为空");
-
         return sysAdminService.getSingleAdminByName(userName);
 
     }

@@ -8,6 +8,11 @@ server:
 
 # 配置注册与发现服务 ========================
 eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    enabled: true # 是否启用注册服务 默认为true, false是不启用
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 10
     health-check-url-path: /actuator/health
@@ -17,12 +22,6 @@ custom:
   data:
     gateway:
       host: http://localhost:8762
-
-client:
-  registryFetchIntervalSeconds: 5
-  enabled: true # 是否启用注册服务 默认为true, false是不启用
-  service-url:
-    defaultZone: http://localhost:8761/eureka/
 
 logging:
   file: var/log/app-backend.log

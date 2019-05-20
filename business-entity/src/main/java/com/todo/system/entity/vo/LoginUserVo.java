@@ -3,9 +3,9 @@ package com.todo.system.entity.vo;
 
 /**
  * @program: com-todo-sysytem-parent
- * @description: LoginUser
+ * @description: LoginUserVo
  * @author: littleWhite
- * @create: 2019-05-05 15:30
+ * @create: 2019/5/5 15:30
  **/
 public class LoginUserVo {
 

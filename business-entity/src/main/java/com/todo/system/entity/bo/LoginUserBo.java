@@ -4,9 +4,9 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * @program: com-todo-sysytem-parent
- * @description: LoginUser
+ * @description: LoginUserBo
  * @author: littleWhite
- * @create: 2019-05-05 15:30
+ * @create: 2019/5/5 15:30
  **/
 public class LoginUserBo {
 

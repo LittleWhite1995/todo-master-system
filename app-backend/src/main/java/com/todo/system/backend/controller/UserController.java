@@ -1,7 +1,6 @@
 package com.todo.system.backend.controller;
 
 import com.todo.system.backend.config.AppBackendConfigProperties;
-//import com.todo.system.backend.utils.BPwdEncoderUtil;
 import com.todo.system.entity.bo.LoginUserBo;
 import com.todo.system.entity.po.SysAdmin;
 import com.todo.system.entity.vo.LoginUserVo;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 
@@ -39,8 +35,6 @@ public class UserController {
 
     /**
      * 登录 login
-     * @param request
-     * @param response
      * @param loginUserBo
      * @param result
      * @return
@@ -51,7 +45,7 @@ public class UserController {
 //            @ApiImplicitParam(name = "password", value = "密码", required = true)
 //    })
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public UnifiedResponseObject Login(HttpServletRequest request, HttpServletResponse response, @Valid LoginUserBo loginUserBo, BindingResult result) {
+    public UnifiedResponseObject Login(@Valid LoginUserBo loginUserBo, BindingResult result) {
         if (result.hasErrors()) {
             logger.error("用户login接口参数验证 {}", result.getAllErrors());
             return new UnifiedResponseObject().failMsg("用户名或密码为空或不合法");
@@ -62,9 +56,6 @@ public class UserController {
         if (sysAdmin == null) {
             return new UnifiedResponseObject<String>().failMsg("用户名或密码不合法");
         }
-
-//        if (!BPwdEncoderUtil.matches(loginUserBo.getPassword(), sysAdmin.getPassword().replace("{bcrypt}","")))
-//            return new UnifiedResponseObject<String>().failMsg("密码不正确");
 
         if (!loginUserBo.getPassword().equals(sysAdmin.getPassword()))
             return new UnifiedResponseObject<String>().failMsg("密码不正确");
