@@ -6,6 +6,9 @@ import com.todo.system.entity.po.SysAdmin;
 import com.todo.system.entity.vo.LoginUserVo;
 import com.todo.system.util.web.UnifiedResponseObject;
 import com.todo.system.util.web.UrlRegulation;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +42,11 @@ public class UserController {
      * @param result
      * @return
      */
-//    @ApiOperation(value = "用户登录", notes = "")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "userName", value = "用户名", required = true),
-//            @ApiImplicitParam(name = "password", value = "密码", required = true)
-//    })
+    @ApiOperation(value = "用户登录", notes = "")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userName", value = "用户名", required = true),
+            @ApiImplicitParam(name = "password", value = "密码", required = true)
+    })
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public UnifiedResponseObject Login(@Valid LoginUserBo loginUserBo, BindingResult result) {
         if (result.hasErrors()) {

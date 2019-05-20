@@ -69,10 +69,19 @@ public class TaskController {
 
     @GetMapping(value = "/taskList")
     @ApiOperation(value = "根据部分字段和时间查询任务信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "title", value = "标题", dataType = "String"),
+            @ApiImplicitParam(name = "follow", value = "是否关注", dataType = "Integer"),
+            @ApiImplicitParam(name = "instancy", value = "紧急程度", dataType = "Integer"),
+            @ApiImplicitParam(name = "status", value = "任务状态", dataType = "Integer"),
+            @ApiImplicitParam(name = "category", value = "任务类别", dataType = "String"),
+            @ApiImplicitParam(name = "startTime", value = "开始时间", dataType = "String"),
+            @ApiImplicitParam(name = "endTime", value = "结束时间", dataType = "String")
+    })
     public UnifiedResponseObject taskInfoList(@RequestParam(required = false)String title,
-                                              @RequestParam(required = false)String follow,
-                                              @RequestParam(required = false)String instancy,
-                                              @RequestParam(required = false)String status,
+                                              @RequestParam(required = false)Integer follow,
+                                              @RequestParam(required = false)Integer instancy,
+                                              @RequestParam(required = false)Integer status,
                                               @RequestParam(required = false)String category,
                                               @RequestParam(required = false)String startTime,
                                               @RequestParam(required = false)String endTime,
@@ -80,9 +89,9 @@ public class TaskController {
                                               @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer pageSize){
         MultiValueMap<String, String> map =  new LinkedMultiValueMap<String, String>();
         map.add("title", title);
-        map.add("follow", follow);
-        map.add("instancy", instancy);
-        map.add("status", status);
+        map.add("follow", follow.toString());
+        map.add("instancy", instancy.toString());
+        map.add("status", status.toString());
         map.add("category", category);
         map.add("startTime", startTime);
         map.add("endTime", endTime);
@@ -99,7 +108,7 @@ public class TaskController {
     @DeleteMapping(value = "/deleteTask")
     @ApiOperation(value = "删除任务", notes = "根据任务ID")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "任务ID", dataType = "String")
+            @ApiImplicitParam(name = "id", value = "任务ID", dataType = "String", required = true)
     })
     public UnifiedResponseObject taskInfoList(String id){
         MultiValueMap<String, String> map =  new LinkedMultiValueMap<String, String>();
