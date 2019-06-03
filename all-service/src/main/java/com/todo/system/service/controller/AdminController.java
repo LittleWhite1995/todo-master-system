@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @program: com-todo-sysytem-parent
+ * @description: AdminController
+ * @author: littleWhite
+ * @create: 2019/5/10 11:23
+ **/
 @RestController
 @RequestMapping(UrlRegulation.BizPrefix.ADMIN)
 public class AdminController {

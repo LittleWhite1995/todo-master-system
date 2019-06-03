@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.system.orm.mapper.TaskMapper">
+    <resultMap id="BaseResultMap" type="com.todo.system.entity.po.TaskInfo">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="follow" jdbcType="INTEGER" property="follow" />
+        <result column="instancy" jdbcType="INTEGER" property="instancy" />
+        <result column="done_date" jdbcType="TIMESTAMP" property="doneDate" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="category" jdbcType="VARCHAR" property="category" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id,member_id,title,follow,instancy,done_date,status,category,description,create_time,update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM task_info
+        WHERE id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE FROM task_info
+        WHERE id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.todo.system.entity.po.TaskInfo">
+        INSERT INTO task_info (id,member_id,title,follow,instancy,done_date,status,category,description,create_time,update_time)
+        VALUES (#{id,jdbcType=BIGINT},#{memberId,jdbcType=BIGINT}, #{title,jdbcType=INTEGER}, #{follow,jdbcType=TIMESTAMP},
+        #{instancy,jdbcType=VARCHAR}, #{doneDate,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+        #{category,jdbcType=VARCHAR}, #{description,jdbcType=BIGINT} #{createTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.todo.system.entity.po.TaskInfo">
+        INSERT INTO task_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="follow != null">
+                follow,
+            </if>
+            <if test="instancy != null">
+                instancy,
+            </if>
+            <if test="doneDate != null">
+                done_date,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="category != null">
+                category,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=INTEGER},
+            </if>
+            <if test="follow != null">
+                #{follow,jdbcType=TIMESTAMP},
+            </if>
+            <if test="instancy != null">
+                #{instancy,jdbcType=VARCHAR},
+            </if>
+            <if test="doneDate != null">
+                #{doneDate,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.todo.system.entity.po.TaskInfo">
+        UPDATE task_info
+        SET title = #{title,jdbcType=INTEGER},
+            follow = #{follow,jdbcType=TIMESTAMP},
+            instancy = #{instancy,jdbcType=VARCHAR},
+            done_date = #{doneDate,jdbcType=VARCHAR},
+            status = #{status,jdbcType=VARCHAR},
+            category = #{category,jdbcType=VARCHAR},
+            description = #{description,jdbcType=BIGINT},
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+        WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.todo.system.entity.po.TaskInfo">
+        UPDATE task_info
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=INTEGER},
+            </if>
+            <if test="follow != null">
+                follow = #{follow,jdbcType=TIMESTAMP},
+            </if>
+            <if test="instancy != null">
+                instancy = #{instancy,jdbcType=VARCHAR},
+            </if>
+            <if test="doneDate != null">
+                done_date = #{doneDate,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="queryTaskList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        task_info
+        <where>
+            <if test="menberId != null">
+                AND
+                menber_id = #{menberId}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+        limit #{startNum},#{endNum}
+    </select>
+
+    <select id="queryTaskListCount" resultType="java.lang.Integer">
+        SELECT
+        count(0)
+        FROM
+        task_info
+        <where>
+            <if test="menberId != null">
+                AND
+                menber_id = #{menberId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

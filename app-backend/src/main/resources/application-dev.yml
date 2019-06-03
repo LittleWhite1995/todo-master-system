@@ -4,7 +4,7 @@ spring:
     name: app-backend
 
 server:
-  port: 8180
+  port: 8280
 
 # 配置注册与发现服务 ========================
 eureka:
@@ -12,7 +12,7 @@ eureka:
     registryFetchIntervalSeconds: 5
     enabled: true # 是否启用注册服务 默认为true, false是不启用
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8771/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 10
     health-check-url-path: /actuator/health

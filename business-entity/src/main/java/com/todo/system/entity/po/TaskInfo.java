@@ -12,13 +12,15 @@ public class TaskInfo {
 
     private Long id;
 
+    private Long memberId;
+
     private String title;
 
-    private String follow;
+    private Integer follow;
 
     private Integer instancy;
 
-    private Date done_date;
+    private Date doneDate;
 
     private Integer status;
 
@@ -26,9 +28,9 @@ public class TaskInfo {
 
     private String description;
 
-    private Date create_time;
+    private Date createTime;
 
-    private Date update_time;
+    private Date updateTime;
 
     public Long getId() {
         return id;
@@ -36,6 +38,14 @@ public class TaskInfo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
     }
 
     public String getTitle() {
@@ -46,11 +56,11 @@ public class TaskInfo {
         this.title = title;
     }
 
-    public String getFollow() {
+    public Integer getFollow() {
         return follow;
     }
 
-    public void setFollow(String follow) {
+    public void setFollow(Integer follow) {
         this.follow = follow;
     }
 
@@ -62,12 +72,12 @@ public class TaskInfo {
         this.instancy = instancy;
     }
 
-    public Date getDone_date() {
-        return done_date;
+    public Date getDoneDate() {
+        return doneDate;
     }
 
-    public void setDone_date(Date done_date) {
-        this.done_date = done_date;
+    public void setDoneDate(Date doneDate) {
+        this.doneDate = doneDate;
     }
 
     public Integer getStatus() {
@@ -94,19 +104,20 @@ public class TaskInfo {
         this.description = description;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdate_time() {
-        return update_time;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(Date update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
+
 }

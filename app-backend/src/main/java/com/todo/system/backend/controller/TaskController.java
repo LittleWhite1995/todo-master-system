@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import javax.validation.ValidationException;
 
 @RestController
-@RequestMapping(UrlRegulation.RequestPrefix.REQ_NO_LOGIN + UrlRegulation.BizPrefix.TASK)
+@RequestMapping(UrlRegulation.RequestPrefix.REQ_LOGIN + UrlRegulation.BizPrefix.TASK)
 public class TaskController {
 
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);

@@ -9,6 +9,12 @@ import com.todo.system.util.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @program: com-todo-sysytem-parent
+ * @description: SysAdminServiceImpl
+ * @author: littleWhite
+ * @create: 2019/5/10 15:39
+ **/
 @Service("sysAdminService")
 public class SysAdminServiceImpl implements SysAdminService {
 

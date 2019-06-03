@@ -84,11 +84,28 @@ public class CommonCodes {
      * 用户注册渠道信息
      */
     public static class RegSource{
-        //Erp注册渠道
-        public static final Integer ERP = 1;
+        //App注册渠道
+        public static final Integer APP = 1;
         //微信注册渠道
         public static final Integer WECHAT = 2;
     }
+
+    /**
+     * 任务状态
+     */
+    public static class TaskStatus{
+        //初始化（通用）
+        public static final int INITIALIZATION= 0;
+        //任务完成
+        public static final int AUDIT_PASS= 101;
+        //任务撤销
+        public static final int REPEAL= 102;
+        // TODO 关注 (已关注)
+        public static final int FOLLOW= 1;
+        // TODO 紧急程度（待定）
+        public static final int INSTANCY= 10;
+    }
+
 
 
 }

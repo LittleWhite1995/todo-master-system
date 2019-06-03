@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @program: com-todo-sysytem-parent
+ * @description: UserController
+ * @author: littleWhite
+ * @create: 2019/5/10 11:23
+ **/
 @RestController
 @RequestMapping(UrlRegulation.BizPrefix.USER)
 public class UserController {
