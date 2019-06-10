@@ -1,1 +1,45 @@
+# 提供生成所有ID服务
 
+# 自定义变量
+snowflake:
+  workerId: 10
+  dataCenterId: 10
+
+spring:
+  application:
+    name: snowflake-service
+  redis: # redis配置 ========================
+    host: localhost
+    port: 6379
+    timeout: 5000ms
+
+server:
+  port: 8751
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+# 配置注册与发现服务 ========================
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    enabled: true # 是否启用注册服务 默认为true, false是不启用
+    service-url:
+      defaultZone: http://localhost:8771/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+# =========================================
+
+logging:
+  file: var/log/snowflake-service.log
+  level:
+    com:
+      todo:
+        system:
+          service: DEBUG

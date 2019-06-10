@@ -44,7 +44,7 @@
         <module>business-entity</module>
         <module>todo-util</module>
         <!--<module>gateway-service</module>-->
-        <!--<module>snowflake-service</module>-->
+        <module>snowflake-service</module>
         <!--<module>order-service</module>-->
         <!--<module>auth-service</module>-->
     </modules>
