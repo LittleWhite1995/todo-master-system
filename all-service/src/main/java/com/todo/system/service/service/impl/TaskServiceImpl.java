@@ -24,6 +24,9 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     @Autowired
+    SnowflakeServiceFeignImpl snowflakeServiceFeign;
+
+    @Autowired
     TaskMapper taskMapper;
 
     @Override
@@ -38,7 +41,7 @@ public class TaskServiceImpl implements TaskService {
         }else{
             TaskInfo taskInfo = new TaskInfo();
             BeanUtils.copyProperties(taskInfoBo,taskInfo);
-            taskInfo.setId(new Long("7928458622046208"));
+            taskInfo.setId(snowflakeServiceFeign.generatorId());
             taskInfo.setStatus(CommonCodes.TaskStatus.INITIALIZATION);
             taskInfo.setUpdateTime(now);
             taskInfo.setCreateTime(now);

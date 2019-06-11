@@ -2,8 +2,8 @@
 
 # 自定义变量
 snowflake:
-  workerId: 10
-  dataCenterId: 10
+  workerId: 1
+  dataCenterId: 1
 
 spring:
   application:

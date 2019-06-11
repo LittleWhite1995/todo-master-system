@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @program: com-todo-sysytem-parent
- * @description: MyApplicationRuuner
+ * @description: MyApplicationRuuner(检查应用启动个数,避免ID冲突,暂定7个,该方式有Bug,单机测试可注掉不用)
  * @author: littleWhite
  * @create: 2019/6/10 15:50
  **/
@@ -45,7 +45,7 @@ class MyApplicationRuuner implements ApplicationRunner {
         }else {
             Long index = Long.valueOf(list.get(0));
             // index值不能大于7
-            index = index + 1;
+//            index = index + 1;
 
             if (index > 7)
                 throw new RuntimeException("snowflake dataCenterId 大于7 不允许，请清空redis 中 snowflakey_key的值，或减少机器应用量");
